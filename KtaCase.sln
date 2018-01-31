@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnhancedWorkspace", "KtaCase\KtaCase.csproj", "{C6242824-A0FE-4D0B-B1B6-298F12EB29AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6242824-A0FE-4D0B-B1B6-298F12EB29AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6242824-A0FE-4D0B-B1B6-298F12EB29AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6242824-A0FE-4D0B-B1B6-298F12EB29AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6242824-A0FE-4D0B-B1B6-298F12EB29AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB2F6C67-4221-4264-9213-CBB8A6758195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB2F6C67-4221-4264-9213-CBB8A6758195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB2F6C67-4221-4264-9213-CBB8A6758195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB2F6C67-4221-4264-9213-CBB8A6758195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF0B0366-ACD7-461B-B83F-A115FC39BAB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF0B0366-ACD7-461B-B83F-A115FC39BAB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF0B0366-ACD7-461B-B83F-A115FC39BAB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF0B0366-ACD7-461B-B83F-A115FC39BAB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
