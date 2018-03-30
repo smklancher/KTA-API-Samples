@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TotalAgility.Sdk;
 
-// To find IIS process to debug: appcmd list wp
+// To find IIS process to debug: %windir%\system32\inetsrv\appcmd.exe list wp
 
 namespace KtaCase
 {
