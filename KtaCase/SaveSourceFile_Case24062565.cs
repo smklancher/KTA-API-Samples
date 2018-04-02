@@ -63,9 +63,12 @@ namespace KtaCase
             var folder = ds.GetFolder(sessionId, null, folderId);
             var files = new List<string>();
 
-            foreach (var doc in folder.Documents)
+            if (folder.Documents != null)
             {
-                files.Add(SaveSourceFile(sessionId, doc.Id, folderPath));
+                foreach (var doc in folder.Documents)
+                {
+                    files.Add(SaveSourceFile(sessionId, doc.Id, folderPath));
+                }
             }
 
             return files.ToArray<string>();
