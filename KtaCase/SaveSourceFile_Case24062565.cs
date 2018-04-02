@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TotalAgility.Sdk;
 
 namespace KtaCase
@@ -14,6 +12,8 @@ namespace KtaCase
     {
         public string SaveSourceFile(string sessionId, string documentId, string folderPath)
         {
+            Debugger.Launch();
+
             var ds = new CaptureDocumentService();
 
             string OriginalFileName = "UnknownOriginalName-" + documentId;
