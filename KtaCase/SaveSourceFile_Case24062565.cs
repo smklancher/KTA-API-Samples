@@ -10,6 +10,16 @@ namespace KtaCase
 {
     public class SaveSourceFile_Case24062565
     {
+        /// <summary>
+        /// This tries to save the source file of a document to the given folder, using the original file name stored in 
+        /// the text extension named "" if it exists.  If the text extension does not exist, then the filename is 
+        /// "UnknownOriginalName-" + documentId (no file extension).
+        /// If the input files for the document were tiffs, then no source file exists and a multi-page tiff is saved (with extension tiff).
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <param name="documentId"></param>
+        /// <param name="folderPath"></param>
+        /// <returns></returns>
         public string SaveSourceFile(string sessionId, string documentId, string folderPath)
         {
             Debugger.Launch();
@@ -57,6 +67,15 @@ namespace KtaCase
             return filePath;
         }
 
+        /// <summary>
+        /// Calls SaveSourceFile for each document in a folder and returns an array with the resulting 
+        /// file paths.  Use SaveSourceFilesOpmt for an OPMT system.
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <param name="folderId"></param>
+        /// <param name="folderPath"></param>
+        /// <returns>array with the resulting file paths.  Suitable for mapping to a dynamic complex variable with one string column,
+        /// and mapping to the attachment field of an email activity.</returns>
         public string[] SaveSourceFiles(string sessionId, string folderId, string folderPath)
         {
             var ds = new CaptureDocumentService();
@@ -68,6 +87,40 @@ namespace KtaCase
                 foreach (var doc in folder.Documents)
                 {
                     files.Add(SaveSourceFile(sessionId, doc.Id, folderPath));
+                }
+            }
+
+            return files.ToArray<string>();
+        }
+
+        /// <summary>
+        /// OPMT can only send email from the file system from the specific tenant's generated documents path.  The email activity will
+        /// add that path when trying to get the file, so this function will save to that folder, then return only file names instead of 
+        /// full paths.  That way the return value can be used directly in the email activity's attachment field.
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <param name="folderId"></param>
+        /// <param name="tenantName"></param>
+        /// <param name="live">True if live, false if dev</param>
+        /// <returns>array with the resulting file names.  Suitable for mapping to a dynamic complex variable with one string column,
+        /// and mapping to the attachment field of an email activity.</returns>
+        public string[] SaveSourceFilesOpmt(string sessionId, string folderId, string tenantName, bool live)
+        {
+            var ds = new CaptureDocumentService();
+            var folder = ds.GetFolder(sessionId, null, folderId);
+            var files = new List<string>();
+
+            string tenant = tenantName + "_" + (live ? "live" : "dev");
+            string folderPath = @"C:\ProgramData\Kofax\TotalAgility\Tenants\" + tenant + @"\Generated Documents\";
+
+            if (folder.Documents != null)
+            {
+                foreach (var doc in folder.Documents)
+                {
+                    string filePath = SaveSourceFile(sessionId, doc.Id, folderPath);
+                    var file = new FileInfo(filePath);
+                    // just add the file name within the OPMT generated docs folder for the given tenant and "liveness"
+                    files.Add(file.Name);
                 }
             }
 
