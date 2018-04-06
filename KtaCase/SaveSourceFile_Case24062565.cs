@@ -12,7 +12,7 @@ namespace KtaCase
     {
         /// <summary>
         /// This tries to save the source file of a document to the given folder, using the original file name stored in 
-        /// the text extension named "" if it exists.  If the text extension does not exist, then the filename is 
+        /// the text extension named "Kofax.CEBPM.FileName" if it exists.  If the text extension does not exist, then the filename is 
         /// "UnknownOriginalName-" + documentId (no file extension).
         /// If the input files for the document were tiffs, then no source file exists and a multi-page tiff is saved (with extension tiff).
         /// </summary>
@@ -22,8 +22,6 @@ namespace KtaCase
         /// <returns></returns>
         public string SaveSourceFile(string sessionId, string documentId, string folderPath)
         {
-            Debugger.Launch();
-
             var ds = new CaptureDocumentService();
 
             string OriginalFileName = "UnknownOriginalName-" + documentId;
@@ -52,7 +50,7 @@ namespace KtaCase
                 Debug.Print($"Could not get source file: {ex.Message}");
             }
 
-            if (sourceFile!=null && sourceFile.SourceFile!=null && sourceFile.SourceFile.Length>0)
+            if (sourceFile!=null && sourceFile.SourceFile!=null)
             {
                 Debug.Print($"Source file mime type: {sourceFile.MimeType}");
 
