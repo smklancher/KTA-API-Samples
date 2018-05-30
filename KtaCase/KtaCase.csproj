@@ -89,6 +89,6 @@
   </Target>
   <Import Project="..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.targets" Condition="Exists('..\packages\MSBuild.ILMerge.Task.1.0.5\build\MSBuild.ILMerge.Task.targets')" />
   <PropertyGroup>
-    <PostBuildEvent>"$(TargetDir)\KtaDevCmd.exe" $(TargetPath)</PostBuildEvent>
+    <PostBuildEvent>"$(TargetDir)\KtaDevCmd.exe" dll $(TargetPath)</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -9,6 +9,12 @@ namespace KtaCase
 {
     public class JobNote_Case24032484
     {
+        /// <summary>
+        /// Repeatedly creates job notes, which is intended to demonstrate an error when they are added in the same millisecond (PK error).
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <param name="jobId"></param>
+        /// <param name="numberOfNotes"></param>
         public void RepeatedJobNote(string sessionId, string jobId, int numberOfNotes)
         {
             JobService js = new JobService();
