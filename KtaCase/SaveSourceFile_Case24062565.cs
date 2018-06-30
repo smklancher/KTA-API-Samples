@@ -22,24 +22,14 @@ namespace KtaCase
         /// <returns></returns>
         public string SaveSourceFile(string sessionId, string documentId, string folderPath)
         {
-            var ds = new CaptureDocumentService();
-
-            string OriginalFileName = "UnknownOriginalName-" + documentId;
-
-            try
-            {
-                OriginalFileName = ds.GetTextExtension(sessionId, null,documentId, "Kofax.CEBPM.FileName");
-            }
-            catch (Exception ex)
-            {
-                Debug.Print($"Error getting original name: {ex.Message}");
-            }
+            string OriginalFileName = OriginalFilenameOrDocId(sessionId, documentId);
 
             var filePath = Path.Combine(folderPath, OriginalFileName);
             Debug.Print($"Writing source file to path: {filePath}");
 
             DocumentSourceFile sourceFile = null;
 
+            var ds = new CaptureDocumentService();
             try
             {
                 // Get the source file which will not exist if the source was tif
@@ -50,7 +40,7 @@ namespace KtaCase
                 Debug.Print($"Could not get source file: {ex.Message}");
             }
 
-            if (sourceFile!=null && sourceFile.SourceFile!=null)
+            if (sourceFile != null && sourceFile.SourceFile != null)
             {
                 Debug.Print($"Source file mime type: {sourceFile.MimeType}");
 
@@ -59,7 +49,64 @@ namespace KtaCase
             else
             {
                 // If no source file, get doc file as multipage tif
-                filePath=ds.GetDocumentAsFile(sessionId, documentId, folderPath, OriginalFileName);
+                filePath = ds.GetDocumentAsFile(sessionId, documentId, folderPath, OriginalFileName);
+            }
+
+            return filePath;
+        }
+
+        /// <summary>
+        /// Return original filename.  In case of no original filename, "DocId-{DocIdGUID}".
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <param name="documentId"></param>
+        /// <returns></returns>
+        public static string OriginalFilenameOrDocId(string sessionId, string documentId)
+        {
+            string OriginalFileName=string.Empty;
+            var ds = new CaptureDocumentService();
+
+            try
+            {
+                OriginalFileName = ds.GetTextExtension(sessionId, null, documentId, "Kofax.CEBPM.FileName");
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error getting original name: {ex.Message}");
+            }
+
+            if (string.IsNullOrWhiteSpace(OriginalFileName)) {
+                OriginalFileName = "DocId-" + documentId;
+            }
+
+            return OriginalFileName;
+        }
+
+        /// <summary>
+        /// Saves the document as a multipage tiff with original filename (doc GUID if no name)
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <param name="documentId"></param>
+        /// <param name="folderPath"></param>
+        /// <param name="AppendToFilename"></param>
+        /// <returns></returns>
+        public string SaveTiff(string sessionId, string documentId, string folderPath, string AppendToFilename)
+        {
+            string FileName = OriginalFilenameOrDocId(sessionId, documentId);
+            if (!String.IsNullOrWhiteSpace(AppendToFilename))
+            {
+                FileName = $"{Path.GetFileNameWithoutExtension(FileName)} - {AppendToFilename}";
+            }
+            var ds = new CaptureDocumentService();
+            string filePath;
+            try
+            {
+                filePath = ds.GetDocumentAsFile(sessionId, documentId, folderPath, FileName);
+            }
+            catch (Exception ex)
+            {
+                filePath = Path.Combine(folderPath, $"{FileName}-error.txt");
+                File.WriteAllText(filePath, ex.ToString());
             }
 
             return filePath;

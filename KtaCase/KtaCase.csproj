@@ -59,8 +59,10 @@
   <ItemGroup>
     <Compile Include="DeleteTableRows_Case24048441.cs" />
     <Compile Include="JobNote_Case24032484.cs" />
+    <Compile Include="Misc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveSourceFile_Case24062565.cs" />
+    <Compile Include="Validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ILMerge.props">
