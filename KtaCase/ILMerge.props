@@ -11,7 +11,8 @@
     <ILMergeTransitive>true</ILMergeTransitive>
 
     <!-- Extra ILMerge library paths (semicolon-separated). Dont put your package dependencies here, they will be added automagically -->
-    <ILMergeLibraryPath>C:\Program Files\Kofax\TotalAgility\CoreWorkerService</ILMergeLibraryPath>
+    <ILMergeLibraryPath>C:\Program Files\Kofax\TotalAgility\Agility.Server.Web\bin;C:\Program Files\Kofax\TotalAgility\CoreWorkerService</ILMergeLibraryPath>
+    <!-- C:\Program Files\Kofax\TotalAgility\CoreWorkerService-->
 
     <!-- The solution NuGet package directory if not standard 'SOLUTION\packages' -->
     <ILMergePackagesPath></ILMergePackagesPath>
