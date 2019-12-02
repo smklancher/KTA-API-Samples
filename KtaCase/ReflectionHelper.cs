@@ -20,7 +20,7 @@ namespace KtaCase
             return InternalPropertyList(null, T);
         }
 
-        private static string InternalPropertyList(object obj, Type T)
+        private static string InternalPropertyList(object obj, Type T, bool skipEmpty=true)
         {
             if (obj != null)
             {
@@ -68,7 +68,15 @@ namespace KtaCase
                     }
                     else
                     {
-                        sb.AppendLine(p.Name + ": " + p.GetValue(obj, null));
+                        if(skipEmpty && (value==null || string.IsNullOrWhiteSpace(value.ToString()) || value.ToString() == "0"))
+                        {
+
+                        }
+                        else
+                        {
+                            sb.AppendLine(p.Name + ": " + p.GetValue(obj, null));
+                        }
+                        
                     }
                         
                 }

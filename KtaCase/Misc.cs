@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KtaCase
@@ -20,6 +21,11 @@ namespace KtaCase
             var x = obj1 == obj2;
 
             return x;
+        }
+
+        public void Wait(int seconds)
+        {
+            Thread.Sleep(seconds * 1000);
         }
     }
 }
