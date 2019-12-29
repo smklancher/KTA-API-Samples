@@ -32,7 +32,7 @@
     <!-- added in Version 1.0.4, default=none -->
     <ILMergeAllowDuplicateType></ILMergeAllowDuplicateType>
 
-    <!-- If the <see cref="CopyAttributes"/> is also set, any assembly-level attributes names that have the same type are copied over into the target assembly -->
+    <!-- If the <see cref="CopyAttributes" /> is also set, any assembly-level attributes names that have the same type are copied over into the target assembly -->
     <ILMergeAllowMultipleAssemblyLevelAttributes></ILMergeAllowMultipleAssemblyLevelAttributes>
 
     <!-- See ILMerge documentation -->
@@ -40,7 +40,7 @@
 
     <!-- The assembly level attributes of each input assembly are copied over into the target assembly -->
     <ILMergeCopyAttributes></ILMergeCopyAttributes>
-    
+
     <!-- Creates a .pdb file for the output assembly and merges into it any .pdb files found for input assemblies, default=true -->
     <ILMergeDebugInfo></ILMergeDebugInfo>
 

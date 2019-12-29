@@ -1,9 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnhancedWorkspace", "KtaCase\KtaCase.csproj", "{C6242824-A0FE-4D0B-B1B6-298F12EB29AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KtaCase", "KtaCase\KtaCase.csproj", "{C6242824-A0FE-4D0B-B1B6-298F12EB29AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{34C77317-518E-4E4E-804B-757B4A514249}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		CodeMaid.config = CodeMaid.config
+		KtaCase.snk = KtaCase.snk
+		PostBuild\KtaDevCmd.exe = PostBuild\KtaDevCmd.exe
+		PostBuild\KtaDevCmd.exe.config = PostBuild\KtaDevCmd.exe.config
+		smk.ruleset = smk.ruleset
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentOriginalFilename", "DocumentOriginalFilename\DocumentOriginalFilename.csproj", "{E47AEB8C-5DCB-4B5E-9C3E-796588D37898}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,16 +27,15 @@ Global
 		{C6242824-A0FE-4D0B-B1B6-298F12EB29AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6242824-A0FE-4D0B-B1B6-298F12EB29AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6242824-A0FE-4D0B-B1B6-298F12EB29AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB2F6C67-4221-4264-9213-CBB8A6758195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB2F6C67-4221-4264-9213-CBB8A6758195}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB2F6C67-4221-4264-9213-CBB8A6758195}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB2F6C67-4221-4264-9213-CBB8A6758195}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF0B0366-ACD7-461B-B83F-A115FC39BAB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF0B0366-ACD7-461B-B83F-A115FC39BAB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF0B0366-ACD7-461B-B83F-A115FC39BAB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF0B0366-ACD7-461B-B83F-A115FC39BAB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E47AEB8C-5DCB-4B5E-9C3E-796588D37898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E47AEB8C-5DCB-4B5E-9C3E-796588D37898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E47AEB8C-5DCB-4B5E-9C3E-796588D37898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E47AEB8C-5DCB-4B5E-9C3E-796588D37898}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37C80A0F-BFBF-4A8E-B6A5-A8418AE281BB}
 	EndGlobalSection
 EndGlobal
